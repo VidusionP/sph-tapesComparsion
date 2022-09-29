@@ -37,7 +37,7 @@
         {{{snippet 'product_description'}}}
         {{#each product.category}}
             {{#if this '==' 'Daily'}}
-                <div class="st-ann2"></div>
+                <div data-name="{{this}}" class="st-ann2"></div>
                 <div class="st-ann3" ></div>
             {{else if this '==' 'Weekly'}}
                 <div class="st-ann2"></div>
@@ -307,6 +307,7 @@
 {{inject "breadcrumbs" breadcrumbs}}
 <script>
     var jsContext = JSON.parse({{jsContext}})
+
      let sku="{{product.sku}}";    
     if (sku!="academymono" && sku!="academylace" && sku!="academyskin") {
         window.addEventListener("DOMContentLoaded",()=>{fetch("/content/data/guides.json").then(e=>e.json()).then(e=>{if(e.name&&jsContext.breadcrumbs.length>=2&&e[jsContext.breadcrumbs[1].name.toLowerCase()]){$("ul[data-tab]").eq(0).append(`<li class="tab"><a href="#tab-guide" class="tab-title">${e.name}</a></li>`);let a='<ul class="guide-wrap">';for(let t of e[jsContext.breadcrumbs[1].name.toLowerCase()])a+=`<li><a href="${t.url}" target="_blank" class="guide-link">${t.name}</a></li>`;a+="</ul>",$(".tabs-contents").eq(0).append(`<div class="tab-content" id="tab-guide">${a}</div>`)}}).catch(e=>console.log(e))});

@@ -1160,6 +1160,13 @@ let stContent3 = `<div class='tape-mobile-container'>
     </div>
     </div>`
 export default function() {
+  const tabHead = $('.st-ann2').data('name')
+  if (tabHead === 'Weekly') {
+    let d = document.createElement('div');
+      $(".st-ann3").empty()
+      $(d).addClass('tape-container').attr('id', 'tapeContainer').append(stContent1).appendTo($(".st-ann3"))
+      $(".st-ann3").append(stContent3)
+}
   $(".tapeTabs-head").on('click', function(n) {
     if (n.target.innerHTML === 'Weekly') {
         let d = document.createElement('div');

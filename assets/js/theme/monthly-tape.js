@@ -790,6 +790,14 @@ function showColumns(){
 </div>
   `
   export default function() {
+    const tabHead = $('.st-ann2').data('name')
+    if (tabHead === 'Monthly') {
+          $(".st-ann3").empty()
+    $(".st-ann3").css('display','block')
+
+    $(".st-ann3").removeAttr('id');
+    $(".st-ann3").append(stContent2)
+    }
     $(".tapeTabs-head").on('click', function(n) {
       if (n.target.innerHTML === 'Monthly') {
                  $(".st-ann3").empty()

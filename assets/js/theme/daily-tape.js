@@ -3,6 +3,7 @@ import $ from 'jquery';
 let stContent = `
 
 <div id="tapeContainer" class="tape-container">
+  
   <div id="columnOne">
     <div class="tape-main-title" style="height: 175px;"></div>
     <div class="tape-title" style="height: 60px;">Poly</div>
@@ -542,12 +543,13 @@ var i10 = "itemTen";
 `
 
 export default function() {
+
   $(".st-ann2").append(`<div class="tape-header">Which tape is right for your hair system?</div>
   <div class="tape-feature-container" id="tapeShowColumnsContainer">
       <div class="tape-show-columns" id="tapeShowColumns"><button style="text-decoration-line: underline" onclick="showColumns()">Show Hidden Columns</button></div>
   </div>
   <div class="tapeTabs">
-      <div class="tapeTabs-head activeTab" >Daily</div>
+      <div class="tapeTabs-head" >Daily</div>
       <div class="tapeTabs-head" >Weekly</div>
       <div class="tapeTabs-head" >Monthly</div>
   </div>
@@ -598,6 +600,20 @@ export default function() {
   var br10 = "buttonTenReveal";
   </script>
   `)
+  if ($('.st-ann2').length) {
+    const tabHead = $('.st-ann2').data('name')
+  
+      if (tabHead === 'Daily') {
+        $('.tapeTabs-head')[0].classList.add("activeTab")
+      } else if (tabHead === 'Weekly') {
+        $('.tapeTabs-head')[1].classList.add("activeTab")
+      } else if (tabHead === 'Monthly') {
+        $('.tapeTabs-head')[2].classList.add("activeTab")
+      } else {
+    
+      }
+    }
+  // console.log($('.st-ann2').data('name'))
   $(".tapeTabs-head").on('click', function(n) {
 
     Array.from(n.target.parentElement.children).forEach(sib => sib.classList.remove('activeTab'));
